@@ -1,0 +1,139 @@
+
+1)
+
+
+MariaDB [organization]> SELECT ename,salary FROM emp ORDER BY salary DESC LIMIT 1;
++-------+--------+
+| ename | salary |
++-------+--------+
+| King  |   6500 |
++-------+--------+
+1 row in set (0.000 sec)
+
+
+2)
+
+SELECT ename from emp e join dept d on e.deptno=d.deptno where dname="Sales";
++--------+
+| ename  |
++--------+
+| Allen  |
+| Ward   |
+| Martin |
+| Blake  |
+| Turner |
+| James  |
++--------+
+6 rows in set (0.001 sec)
+
+
+3)
+
+ SELECT ename from emp e join dept d on e.deptno=d.deptno where location="New York";
++--------+
+| ename  |
++--------+
+| Clark  |
+| King   |
+| Miller |
++--------+
+3 rows in set (0.001 sec)
+
+
+4)
+
+ SELECT count(ename) from emp e join dept d on e.deptno=d.deptno where dname="Sales";
++--------------+
+| count(ename) |
++--------------+
+|            6 |
++--------------+
+1 row in set (0.001 sec)
+
+5)
+
+SELECT e.empno, e.ename, e.salary, e.deptno
+    -> FROM emp e
+    -> WHERE e.salary > ALL (
+    ->    SELECT salary
+    ->    FROM emp
+    ->    WHERE deptno = 30
+    -> );
++-------+-------+--------+--------+
+| empno | ename | salary | deptno |
++-------+-------+--------+--------+
+|  7566 | Jones |   3375 |     20 |
+|  7788 | Scott |   3500 |     20 |
+|  7839 | King  |   6500 |     10 |
+|  7902 | Ford  |   3500 |     20 |
++-------+-------+--------+--------+
+4 rows in set (0.001 sec)
+
+
+6)
+
+SELECT e.empno, e.ename, e.salary, e.deptno
+    -> FROM emp e
+    -> WHERE e.salary > (
+    ->    SELECT MIN(salary)
+    ->    FROM emp
+    ->    WHERE deptno = 30
+    -> );
++-------+--------+--------+--------+
+| empno | ename  | salary | deptno |
++-------+--------+--------+--------+
+|  7499 | Allen  |   2000 |     30 |
+|  7521 | Ward   |   1650 |     30 |
+|  7566 | Jones  |   3375 |     20 |
+|  7654 | Martin |   1650 |     30 |
+|  7698 | Blake  |   3250 |     30 |
+|  7782 | Clark  |   2850 |     10 |
+|  7788 | Scott  |   3500 |     20 |
+|  7813 | David  |   1500 |     20 |
+|  7839 | King   |   6500 |     10 |
+|  7844 | Turner |   1900 |     30 |
+|  7876 | Adams  |   1500 |     20 |
+|  7902 | Ford   |   3500 |     20 |
+|  7934 | Miller |   1700 |     10 |
++-------+--------+--------+--------+
+13 rows in set (0.001 sec)
+
+7)
+
+SELECT d.deptno, d.dname
+    -> FROM dept d
+    -> LEFT JOIN emp e
+    -> ON d.deptno = e.deptno
+    -> WHERE e.empno IS NULL;
++--------+------------+
+| deptno | dname      |
++--------+------------+
+|     40 | Operations |
++--------+------------+
+1 row in set (0.000 sec)
+
+
+8)
+
+SELECT e.empno, e.ename, e.salary, e.deptno
+    -> FROM emp e
+    -> WHERE e.salary > (
+    ->    SELECT AVG(salary)
+    ->    FROM emp
+    ->    WHERE deptno = e.deptno
+    -> );
++-------+-------+--------+--------+
+| empno | ename | salary | deptno |
++-------+-------+--------+--------+
+|  7499 | Allen |   2000 |     30 |
+|  7566 | Jones |   3375 |     20 |
+|  7698 | Blake |   3250 |     30 |
+|  7788 | Scott |   3500 |     20 |
+|  7839 | King  |   6500 |     10 |
+|  7902 | Ford  |   3500 |     20 |
++-------+-------+--------+--------+
+6 rows in set (0.001 sec)
+
+
+
+
