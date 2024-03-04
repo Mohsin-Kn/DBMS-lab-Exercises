@@ -1,0 +1,242 @@
+
+1)
+
+DELIMITER $$
+MariaDB [person]> CREATE PROCEDURE insert_summary(
+    ->   IN p_id INT,
+    ->   IN p_total_users INT,
+    ->   IN p_yahoo INT,
+    ->   IN p_hotmail INT,
+    ->   IN p_gmail INT
+    -> )
+    -> BEGIN
+    ->   INSERT INTO summary(id, total_users, yahoo, hotmail, gmail)
+    ->   VALUES(p_id, p_total_users, p_yahoo, p_hotmail, p_gmail);
+    -> END $$
+Query OK, 0 rows affected (0.011 sec)
+
+MariaDB [person]> DELIMITER ;
+MariaDB [person]> CALL insert_summary(1, 100, 20, 30, 50);
+Query OK, 1 row affected (0.038 sec)
+
+MariaDB [person]> select * from summary;
++----+-------------+-------+---------+-------+
+| id | total_users | yahoo | hotmail | gmail |
++----+-------------+-------+---------+-------+
+|  1 |         100 |    20 |      30 |    50 |
++----+-------------+-------+---------+-------+
+1 row in set (0.000 sec)
+
+2)
+DELIMITER $$
+MariaDB [person]> CREATE PROCEDURE insert_user_with_salary(
+    ->   IN p_user_id INT,
+    ->   IN p_username VARCHAR(255),
+    ->   IN p_password VARCHAR(255),
+    ->   IN p_email VARCHAR(255),
+    ->   IN p_salary INT
+    -> )
+    -> BEGIN
+    ->   INSERT INTO users(user_id, username, password, email, salary)
+    ->   VALUES(p_user_id, p_username, p_password, p_email, p_salary);
+    -> END $$
+Query OK, 0 rows affected (0.033 sec)
+
+MariaDB [person]> DELIMITER ;
+MariaDB [person]> CALL insert_user_with_salary(1, 'mohsin', 'pass2828', 'mohsin@example.com', 50000);
+Query OK, 1 row affected (0.001 sec)
+
+MariaDB [person]> select * from users;
++---------+----------+----------+--------------------+--------+
+| user_id | username | password | email              | salary |
++---------+----------+----------+--------------------+--------+
+|       1 | mohsin   | pass2828 | mohsin@example.com |  50000 |
++---------+----------+----------+--------------------+--------+
+1 row in set (0.000 sec)
+
+
+3)
+
+DELIMITER $$
+MariaDB [person]> CREATE PROCEDURE count_users()
+    -> BEGIN
+    ->   SELECT COUNT(*) AS total_users FROM users;
+    -> END $$
+Query OK, 0 rows affected (0.002 sec)
+
+ DELIMITER ;
+MariaDB [person]> CALL count_users();
++-------------+
+| total_users |
++-------------+
+|           3 |
++-------------+
+1 row in set (0.001 sec)
+
+Query OK, 0 rows affected (0.001 sec)
+
+
+
+
+4)
+DELIMITER $$
+MariaDB [person]> CREATE PROCEDURE avg_salary()
+    -> BEGIN
+    ->   SELECT AVG(salary) AS avg_salary FROM users;
+    -> END $$
+Query OK, 0 rows affected (0.011 sec)
+
+CALL avg_salary();
++------------+
+| avg_salary |
++------------+
+| 26666.6667 |
++------------+
+1 row in set (0.001 sec)
+
+5)
+
+DELIMITER $$
+MariaDB [person]> CREATE PROCEDURE minmax()
+    -> BEGIN
+    ->   SELECT MIN(salary) AS lowest_salary, MAX(salary) AS highest_salary FROM users;
+    -> END $$
+Query OK, 0 rows affected (0.012 sec)
+
+MariaDB [person]> DELIMITER ;
+MariaDB [person]> CALL minmax();
++---------------+----------------+
+| lowest_salary | highest_salary |
++---------------+----------------+
+|         10000 |          50000 |
++---------------+----------------+
+1 row in set (0.001 sec)
+
+Query OK, 0 rows affected (0.001 sec)
+
+
+6)
+
+Create the "users" table
+MariaDB [person]> CREATE TABLE users (
+    ->   user_id INT PRIMARY KEY,
+    ->   username VARCHAR(255),
+    ->   password VARCHAR(255),
+    ->   email VARCHAR(255),
+    ->   salary INT
+    -> );
+ERROR 1050 (42S01): Table 'users' already exists
+MariaDB [person]> 
+MariaDB [person]> -- Create the "summary" table
+MariaDB [person]> CREATE TABLE summary (
+    ->   id INT PRIMARY KEY,
+    ->   total_users INT,
+    ->   yahoo INT,
+    ->   hotmail INT,
+    ->   gmail INT
+    -> );
+ERROR 1050 (42S01): Table 'summary' already exists
+MariaDB [person]> 
+MariaDB [person]> -- Create the first trigger to increment the total_users attribute in the summary table whenever a new entry is made to the users table
+MariaDB [person]> DELIMITER $$
+MariaDB [person]> CREATE TRIGGER new_user_added AFTER INSERT ON users
+    -> FOR EACH ROW
+    -> BEGIN
+    ->   UPDATE summary SET total_users = total_users + 1;
+    -> END $$
+Query OK, 0 rows affected (0.012 sec)
+
+MariaDB [person]> DELIMITER ;
+MariaDB [person]> 
+MariaDB [person]> -- Create the second trigger to decrement the total_users attribute in the summary table whenever a user is deleted from the users table
+MariaDB [person]> DELIMITER $$
+MariaDB [person]> CREATE TRIGGER user_deleted AFTER DELETE ON users
+    -> FOR EACH ROW
+    -> BEGIN
+    ->   UPDATE summary SET total_users = total_users - 1;
+    -> END $$
+Query OK, 0 rows affected (0.002 sec)
+
+
+
+INSERT INTO users (user_id, username, password, email, salary)
+    -> VALUES
+    ->   (1, 'JohnDoe', 'password', 'johndoe@example.com', 50000),
+    ->   (2, 'JaneDoe', 'password', 'janedoe@example.com', 60000),
+    ->   (3, 'BobSmith', 'password', 'bobsmith@example.com', 70000),
+    ->   (4, 'SaraJohnson', 'password', 'sarajohnson@example.com', 80000),
+    ->   (5, 'MikeBrown', 'password', 'mikebrown@example.com', 90000);
+ERROR 1062 (23000): Duplicate entry '1' for key 'PRIMARY'
+MariaDB [person]> select * from summary;
++----+-------------+-------+---------+-------+
+| id | total_users | yahoo | hotmail | gmail |
++----+-------------+-------+---------+-------+
+|  1 |         105 |    20 |      30 |    50 |
++----+-------------+-------+---------+-------+
+1 row in set (0.000 sec)
+
+MariaDB [person]> 
+MariaDB [person]> INSERT INTO users (user_id, username, password, email, salary)
+    -> VALUES
+    ->   (9, 'sharf', 'okk333', 'sharf@example.com', 100000);
+Query OK, 1 row affected (0.001 sec)
+
+MariaDB [person]> select * from summary;
++----+-------------+-------+---------+-------+
+| id | total_users | yahoo | hotmail | gmail |
++----+-------------+-------+---------+-------+
+|  1 |         106 |    20 |      30 |    50 |
++----+-------------+-------+---------+-------+
+1 row in set (0.000 sec)
+
+
+#Delete 
+
+DELETE FROM users WHERE user_id = 5;
+Query OK, 1 row affected (0.011 sec)
+
+MariaDB [person]> SELECT * FROM summary;
++----+-------------+-------+---------+-------+
+| id | total_users | yahoo | hotmail | gmail |
++----+-------------+-------+---------+-------+
+|  1 |         105 |    20 |      30 |    50 |
++----+-------------+-------+---------+-------+
+1 row in set (0.001 sec)
+
+MariaDB [person]> DELETE FROM users WHERE user_id = 9;
+Query OK, 1 row affected (0.011 sec)
+
+MariaDB [person]> SELECT * FROM summary;
++----+-------------+-------+---------+-------+
+| id | total_users | yahoo | hotmail | gmail |
++----+-------------+-------+---------+-------+
+|  1 |         104 |    20 |      30 |    50 |
++----+-------------+-------+---------+-------+
+1 row in set (0.000 sec)
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
