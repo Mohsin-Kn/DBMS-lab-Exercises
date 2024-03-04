@@ -1,0 +1,184 @@
+
+
+
+TASK #1
+
+MariaDB [(none)]> create user "meew"@"localhost" IDENTIFIED BY "peew";
+Query OK, 0 rows affected (0.011 sec)
+
+
+MariaDB [(none)]> use themepark;
+=================================================================================================================
+
+TASK #2.1
+
+
+MariaDB [themepark]> grant select,update on themepark.employee to 'meew'@'localhost';
+
+
+    #2.2
+
+MariaDB [themepark]> select * from employee;
++---------+-----------+------------+-----------+------------+---------------+---------------+-----------+-----------+
+| EMP_NUM | EMP_TITLE | EMP_LNAME  | EMP_FNAME | EMP_DOB    | EMP_HIRE_DATE | EMP_AREA_CODE | EMP_PHONE | PARK_CODE |
++---------+-----------+------------+-----------+------------+---------------+---------------+-----------+-----------+
+|     100 | Ms        | Calderdale | Emma      | 1972-06-15 | 1992-03-15    | 0181          | 324-9652  | FR1001    |
+|     101 | Ms        | Ricardo    | Marshel   | 1978-03-19 | 1996-04-25    | 0181          | 324-4472  | UK3452    |
+|     102 | Mr        | Arshad     | Arif      | 1969-11-14 | 1990-12-20    | 7253          | 675-8993  | FR1001    |
+|     103 | Ms        | Roberts    | Anne      | 1974-10-16 | 1994-08-16    | 0181          | 898-3456  | UK3452    |
+|     104 | Mr        | Denver     | Enrica    | 1980-11-08 | 2001-10-20    | 7253          | 504-4434  | ZA1342    |
+|     105 | Ms        | Namowa     | Mirrelle  | 1990-03-14 | 2006-11-08    | 0181          | 890-3243  | FR1001    |
+|     106 | Mrs       | Smith      | Gemma     | 1968-02-12 | 1989-01-05    | 0181          | 324-7845  | ZA1342    |
++---------+-----------+------------+-----------+------------+---------------+---------------+-----------+-----------+
+
+
+MariaDB [themepark]> UPDATE EMPLOYEE SET EMP_LNAME='DANIEL' WHERE EMP_NUM = '104';
+Query OK, 1 row affected (0.022 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+MariaDB [themepark]> select * from employee;
++---------+-----------+------------+-----------+------------+---------------+---------------+-----------+-----------+
+| EMP_NUM | EMP_TITLE | EMP_LNAME  | EMP_FNAME | EMP_DOB    | EMP_HIRE_DATE | EMP_AREA_CODE | EMP_PHONE | PARK_CODE |
++---------+-----------+------------+-----------+------------+---------------+---------------+-----------+-----------+
+|     100 | Ms        | Calderdale | Emma      | 1972-06-15 | 1992-03-15    | 1211          | 324-9652  | FR1001    |
+|     101 | Ms        | Ricardo    | Marshel   | 1978-03-19 | 1996-04-25    | 0181          | 324-4472  | UK3452    |
+|     102 | Mr        | Arshad     | Arif      | 1969-11-14 | 1990-12-20    | 7253          | 675-8993  | FR1001    |
+|     103 | Ms        | Roberts    | Anne      | 1974-10-16 | 1994-08-16    | 0181          | 898-3456  | UK3452    |
+|     104 | Mr        | DANIEL     | Enrica    | 1980-11-08 | 2001-10-20    | 7253          | 504-4434  | ZA1342    |
+|     105 | Ms        | Namowa     | Mirrelle  | 1990-03-14 | 2006-11-08    | 0181          | 890-3243  | FR1001    |
+|     106 | Mrs       | Smith      | Gemma     | 1968-02-12 | 1989-01-05    | 0181          | 324-7845  | ZA1342    |
++---------+-----------+------------+-----------+------------+---------------+---------------+-----------+-----------+
+7 rows in set (0.000 sec)
+
+
+
+    #2.3
+    
+MariaDB [company]> GRANT ALL PRIVILEGES ON company.* TO 'meew'@'localhost';
+Query OK, 0 rows affected (0.012 sec)
+
+MariaDB [themepark]> show databases;
++--------------------+
+| Database           |
++--------------------+
+| fb                 |
+| information_schema |
+| mysql              |
+| organization       |
+| themepark            |
+| performance_schema |
+| phpmyadmin         |
+| sales_co           |
+| test               |
++--------------------+
+9 rows in set (0.001 sec)
+
+
+
+    #2.4
+
+MariaDB [(none)]> GRANT CREATE ON *.* TO 'meew'@'localhost';
+Query OK, 0 rows affected (0.011 sec)
+
+
+
+
+
+=================================================================================================================\
+
+
+TASK #3
+
+MariaDB [p200018]> revoke select,update on p200018.employee from 'rafay'@'localhost';
+Query OK, 0 rows affected (0.014 sec)
+
+
+=================================================================================================================\
+
+
+TASK #4.2
+
+//4.1
+using same DB(themepark)
+
+MariaDB [themepark]> set autocommit=0;
+Query OK, 0 rows affected (0.004 sec)
+
+    #4.3 
+
+MariaDB [themepark]> insert into THEMEPARK VALUES('IG69','Fairyland','Islamabad','PK');
+Query OK, 1 row affected (0.012 sec)
+
+
+
+MariaDB [themepark]> UPDATE THEMEPARK SET PARK_CITY='CHAKWAL' WHERE PARK_CITY = 'BAECELONA';
+Query OK, 0 rows affected (0.000 sec)
+Rows matched: 0  Changed: 0  Warnings: 0
+
+
+    #4.4
+
+
+MariaDB [themepark]> rollback;
+Query OK, 0 rows affected (0.013 sec)
+
+MariaDB [themepark]> select * from THEMEPARK;
++-----------+---------------+--------------+--------------+
+| PARK_CODE | PARK_NAME     | PARK_CITY    | PARK_COUNTRY |
++-----------+---------------+--------------+--------------+
+|           |               |              |              |
+| FR1001    | FairyLand     | PARIS        | FR           |
+| NL1202    | Efling        | NOORD        | NL           |
+| PK1001    | Iqbalpark     | Lahore       | PK           |
+| SP4533    | AdventurePort | BARCELONA    | SP           |
+| SW2323    | Labyrinthe    | LAUSANNE     | SW           |
+| UK2622    | MiniLand      | WINDSOR      | UK           |
+| UK3452    | PleasureLand  | STOKE        | UK           |
+| ZA1342    | GoldTown      | JOHANNESBURG | ZA           |
++-----------+---------------+--------------+--------------+
+9 rows in set (0.000 sec)
+
+
+    #4.5
+
+MariaDB [themepark]> savepoint s1;
+Query OK, 0 rows affected (0.000 sec)
+
+MariaDB [themepark]> insert into THEMEPARK VALUES('IG69','Joyland','Multan','PK');
+Query OK, 1 row affected (0.002 sec)
+
+MariaDB [themepark]> select * from THEMEPARK;
++-----------+---------------+--------------+--------------+
+| PARK_CODE | PARK_NAME     | PARK_CITY    | PARK_COUNTRY |
++-----------+---------------+--------------+--------------+
+|           |               |              |              |
+| FR1001    | FairyLand     | PARIS        | FR           |
+| IG69      | Joyland       | Multan       | PK           |
+| NL1202    | Efling        | NOORD        | NL           |
+| PK1001    | Iqbalpark     | Lahore       | PK           |
+| SP4533    | AdventurePort | BARCELONA    | SP           |
+| SW2323    | Labyrinthe    | LAUSANNE     | SW           |
+| UK2622    | MiniLand      | WINDSOR      | UK           |
+| UK3452    | PleasureLand  | STOKE        | UK           |
+| ZA1342    | GoldTown      | JOHANNESBURG | ZA           |
++-----------+---------------+--------------+--------------+
+10 rows in set (0.000 sec)
+
+MariaDB [themepark]> rollback to s1;
+Query OK, 0 rows affected (0.000 sec)
+
+MariaDB [themepark]> select * from THEMEPARK;
++-----------+---------------+--------------+--------------+
+| PARK_CODE | PARK_NAME     | PARK_CITY    | PARK_COUNTRY |
++-----------+---------------+--------------+--------------+
+|           |               |              |              |
+| FR1001    | FairyLand     | PARIS        | FR           |
+| NL1202    | Efling        | NOORD        | NL           |
+| PK1001    | Iqbalpark     | Lahore       | PK           |
+| SP4533    | AdventurePort | BARCELONA    | SP           |
+| SW2323    | Labyrinthe    | LAUSANNE     | SW           |
+| UK2622    | MiniLand      | WINDSOR      | UK           |
+| UK3452    | PleasureLand  | STOKE        | UK           |
+| ZA1342    | GoldTown      | JOHANNESBURG | ZA           |
++-----------+---------------+--------------+--------------+
+9 rows in set (0.000 sec)

@@ -1,0 +1,567 @@
+						Question 4
+use P190060
+'switched to db P190060'
+
+						(1)
+db.Cities.find({ "timezone": "Africa/Harare" })
+{
+  _id: ObjectId("6450c4d1087a9928298e1963"),
+  name: 'Zvishavane',
+  country: 'ZW',
+  timezone: 'Africa/Harare',
+  population: 35896,
+  location: {
+    latitude: -20.32674,
+    longitude: 30.06648
+  }
+}
+{
+  _id: ObjectId("6450c4d1087a9928298e1964"),
+  name: 'Victoria Falls',
+  country: 'ZW',
+  timezone: 'Africa/Harare',
+  population: 35761,
+  location: {
+    latitude: -17.92353,
+    longitude: 25.84299
+  }
+}
+{
+  _id: ObjectId("6450c4d1087a9928298e1965"),
+  name: 'Shurugwi',
+  country: 'ZW',
+  timezone: 'Africa/Harare',
+  population: 17075,
+  location: {
+    latitude: -19.67016,
+    longitude: 30.00589
+  }
+}
+{
+  _id: ObjectId("6450c4d1087a9928298e1966"),
+  name: 'Shangani',
+  country: 'ZW',
+  timezone: 'Africa/Harare',
+  population: 3835,
+  location: {
+    latitude: -19.78333,
+    longitude: 29.36667
+  }
+}
+{
+  _id: ObjectId("6450c4d1087a9928298e1967"),
+  name: 'Shamva',
+  country: 'ZW',
+  timezone: 'Africa/Harare',
+  population: 10317,
+  location: {
+    latitude: -17.31159,
+    longitude: 31.57561
+  }
+}
+{
+  _id: ObjectId("6450c4d1087a9928298e1968"),
+  name: 'Rusape',
+  country: 'ZW',
+  timezone: 'Africa/Harare',
+  population: 29292,
+  location: {
+    latitude: -18.52785,
+    longitude: 32.12843
+  }
+}
+{
+  _id: ObjectId("6450c4d1087a9928298e1969"),
+  name: 'Redcliff',
+  country: 'ZW',
+  timezone: 'Africa/Harare',
+  population: 33197,
+  location: {
+    latitude: -19.03333,
+    longitude: 29.78333
+  }
+}
+{
+  _id: ObjectId("6450c4d1087a9928298e196a"),
+  name: 'Raffingora',
+  country: 'ZW',
+  timezone: 'Africa/Harare',
+  population: 1957,
+  location: {
+    latitude: -17.03333,
+    longitude: 30.43333
+  }
+}
+{
+  _id: ObjectId("6450c4d1087a9928298e196b"),
+  name: 'Plumtree',
+  country: 'ZW',
+  timezone: 'Africa/Harare',
+  population: 2148,
+  location: {
+    latitude: -20.48333,
+    longitude: 27.81667
+  }
+}
+{
+  _id: ObjectId("6450c4d1087a9928298e196c"),
+  name: 'Penhalonga',
+  country: 'ZW',
+  timezone: 'Africa/Harare',
+  population: 7681,
+  location: {
+    latitude: -18.89112,
+    longitude: 32.69781
+  }
+}
+{
+  _id: ObjectId("6450c4d1087a9928298e196d"),
+  name: 'Odzi',
+  country: 'ZW',
+  timezone: 'Africa/Harare',
+  population: 3438,
+  location: {
+    latitude: -18.96167,
+    longitude: 32.40557
+  }
+}
+{
+  _id: ObjectId("6450c4d1087a9928298e196e"),
+  name: 'Nyazura',
+  country: 'ZW',
+  timezone: 'Africa/Harare',
+  population: 2110,
+  location: {
+    latitude: -18.70587,
+    longitude: 32.16796
+  }
+}
+{
+  _id: ObjectId("6450c4d1087a9928298e196f"),
+  name: 'Nyanga',
+  country: 'ZW',
+  timezone: 'Africa/Harare',
+  population: 4852,
+  location: {
+    latitude: -18.21667,
+    longitude: 32.75
+  }
+}
+{
+  _id: ObjectId("6450c4d1087a9928298e1970"),
+  name: 'Norton',
+  country: 'ZW',
+  timezone: 'Africa/Harare',
+  population: 52054,
+  location: {
+    latitude: -17.88333,
+    longitude: 30.7
+  }
+}
+{
+  _id: ObjectId("6450c4d1087a9928298e1971"),
+  name: 'Mvurwi',
+  country: 'ZW',
+  timezone: 'Africa/Harare',
+  population: 7970,
+  location: {
+    latitude: -17.03333,
+    longitude: 30.85
+  }
+}
+{
+  _id: ObjectId("6450c4d1087a9928298e1972"),
+  name: 'Mvuma',
+  country: 'ZW',
+  timezone: 'Africa/Harare',
+  population: 4331,
+  location: {
+    latitude: -19.27924,
+    longitude: 30.52828
+  }
+}
+{
+  _id: ObjectId("6450c4d1087a9928298e1973"),
+  name: 'Mutoko',
+  country: 'ZW',
+  timezone: 'Africa/Harare',
+  population: 9532,
+  location: {
+    latitude: -17.39699,
+    longitude: 32.22677
+  }
+}
+{
+  _id: ObjectId("6450c4d1087a9928298e1974"),
+  name: 'Mutare',
+  country: 'ZW',
+  timezone: 'Africa/Harare',
+  population: 184205,
+  location: {
+    latitude: -18.9707,
+    longitude: 32.67086
+  }
+}
+{
+  _id: ObjectId("6450c4d1087a9928298e1975"),
+  name: 'Murehwa',
+  country: 'ZW',
+  timezone: 'Africa/Harare',
+  population: 8559,
+  location: {
+    latitude: -17.64322,
+    longitude: 31.784
+  }
+}
+{
+  _id: ObjectId("6450c4d1087a9928298e1976"),
+  name: 'Mount Darwin',
+  country: 'ZW',
+  timezone: 'Africa/Harare',
+  population: 6349,
+  location: {
+    latitude: -16.77251,
+    longitude: 31.58381
+  }
+}
+Type "it" for more
+P190060
+it
+{
+  _id: ObjectId("6450c4d1087a9928298e1977"),
+  name: 'Mhangura',
+  country: 'ZW',
+  timezone: 'Africa/Harare',
+  population: 6503,
+  location: {
+    latitude: -16.89386,
+    longitude: 30.16828
+  }
+}
+{
+  _id: ObjectId("6450c4d1087a9928298e1978"),
+  name: 'Mazoe',
+  country: 'ZW',
+  timezone: 'Africa/Harare',
+  population: 9966,
+  location: {
+    latitude: -17.50404,
+    longitude: 30.97388
+  }
+}
+{
+  _id: ObjectId("6450c4d1087a9928298e1979"),
+  name: 'Masvingo',
+  country: 'ZW',
+  timezone: 'Africa/Harare',
+  population: 76290,
+  location: {
+    latitude: -20.06373,
+    longitude: 30.82766
+  }
+}
+{
+  _id: ObjectId("6450c4d1087a9928298e197a"),
+  name: 'Mashava',
+  country: 'ZW',
+  timezone: 'Africa/Harare',
+  population: 12994,
+  location: {
+    latitude: -20.03665,
+    longitude: 30.48225
+  }
+}
+{
+  _id: ObjectId("6450c4d1087a9928298e197b"),
+  name: 'Marondera',
+  country: 'ZW',
+  timezone: 'Africa/Harare',
+  population: 57082,
+  location: {
+    latitude: -18.18527,
+    longitude: 31.55193
+  }
+}
+{
+  _id: ObjectId("6450c4d1087a9928298e197c"),
+  name: 'Macheke',
+  country: 'ZW',
+  timezone: 'Africa/Harare',
+  population: 3642,
+  location: {
+    latitude: -18.13901,
+    longitude: 31.84933
+  }
+}
+{
+  _id: ObjectId("6450c4d1087a9928298e197d"),
+  name: 'Lupane',
+  country: 'ZW',
+  timezone: 'Africa/Harare',
+  population: 1200,
+  location: {
+    latitude: -18.93149,
+    longitude: 27.80696
+  }
+}
+{
+  _id: ObjectId("6450c4d1087a9928298e197e"),
+  name: 'Lalapanzi',
+  country: 'ZW',
+  timezone: 'Africa/Harare',
+  population: 1390,
+  location: {
+    latitude: -19.33225,
+    longitude: 30.17768
+  }
+}
+{
+  _id: ObjectId("6450c4d1087a9928298e197f"),
+  name: 'Kwekwe',
+  country: 'ZW',
+  timezone: 'Africa/Harare',
+  population: 99149,
+  location: {
+    latitude: -18.9281,
+    longitude: 29.81486
+  }
+}
+{
+  _id: ObjectId("6450c4d1087a9928298e1980"),
+  name: 'Karoi',
+  country: 'ZW',
+  timezone: 'Africa/Harare',
+  population: 25030,
+  location: {
+    latitude: -16.80993,
+    longitude: 29.69247
+  }
+}
+{
+  _id: ObjectId("6450c4d1087a9928298e1981"),
+  name: 'Kariba',
+  country: 'ZW',
+  timezone: 'Africa/Harare',
+  population: 25531,
+  location: {
+    latitude: -16.51667,
+    longitude: 28.8
+  }
+}
+{
+  _id: ObjectId("6450c4d1087a9928298e1982"),
+  name: 'Kamativi Mine',
+  country: 'ZW',
+  timezone: 'Africa/Harare',
+  population: 1575,
+  location: {
+    latitude: -18.31563,
+    longitude: 27.05728
+  }
+}
+{
+  _id: ObjectId("6450c4d1087a9928298e1983"),
+  name: 'Kadoma',
+  country: 'ZW',
+  timezone: 'Africa/Harare',
+  population: 79174,
+  location: {
+    latitude: -18.33328,
+    longitude: 29.91534
+  }
+}
+{
+  _id: ObjectId("6450c4d1087a9928298e1984"),
+  name: 'Inyathi',
+  country: 'ZW',
+  timezone: 'Africa/Harare',
+  population: 8402,
+  location: {
+    latitude: -19.67563,
+    longitude: 28.84687
+  }
+}
+{
+  _id: ObjectId("6450c4d1087a9928298e1985"),
+  name: 'Insiza',
+  country: 'ZW',
+  timezone: 'Africa/Harare',
+  population: 2645,
+  location: {
+    latitude: -19.78333,
+    longitude: 29.2
+  }
+}
+{
+  _id: ObjectId("6450c4d1087a9928298e1986"),
+  name: 'Hwange',
+  country: 'ZW',
+  timezone: 'Africa/Harare',
+  population: 33210,
+  location: {
+    latitude: -18.36927,
+    longitude: 26.50194
+  }
+}
+{
+  _id: ObjectId("6450c4d1087a9928298e1987"),
+  name: 'Headlands',
+  country: 'ZW',
+  timezone: 'Africa/Harare',
+  population: 1728,
+  location: {
+    latitude: -18.27733,
+    longitude: 32.0515
+  }
+}
+{
+  _id: ObjectId("6450c4d1087a9928298e1988"),
+  name: 'Harare',
+  country: 'ZW',
+  timezone: 'Africa/Harare',
+  population: 1542813,
+  location: {
+    latitude: -17.82935,
+    longitude: 31.05389
+  }
+}
+{
+  _id: ObjectId("6450c4d1087a9928298e1989"),
+  name: 'Gweru',
+  country: 'ZW',
+  timezone: 'Africa/Harare',
+  population: 146073,
+  location: {
+    latitude: -19.45,
+    longitude: 29.81667
+  }
+}
+{
+  _id: ObjectId("6450c4d1087a9928298e198a"),
+  name: 'Gwanda',
+  country: 'ZW',
+  timezone: 'Africa/Harare',
+  population: 14450,
+  location: {
+    latitude: -20.93333,
+    longitude: 29
+  }
+}
+Type "it" for more
+
+							      (2)
+db.Cities.find({ "population": { $gt: 12985000 } })
+{
+  _id: ObjectId("6450c4c4087a9928298c9688"),
+  name: 'Buenos Aires',
+  country: 'AR',
+  timezone: 'America/Argentina/Buenos_Aires',
+  population: 13076300,
+  location: {
+    latitude: -34.61315,
+    longitude: -58.37723
+  }
+}
+{
+  _id: ObjectId("6450c4c6087a9928298cba79"),
+  name: 'Shanghai',
+  country: 'CN',
+  timezone: 'Asia/Shanghai',
+  population: 14608512,
+  location: {
+    longitude: 31.22222,
+    latitude: 121.45806
+  }
+}
+
+
+								(3)
+db.Cities.findOne(
+  { "location.longitude": -58.37723 },
+  { "location": 1, "population": 1, "_id": 0 }
+)
+{
+  population: 13076300,
+  location: {
+    latitude: -34.61315,
+    longitude: -58.37723
+  }
+}
+
+
+								Question# 05
+db.Cities.updateMany(
+  { "country": "PK", "location.latitude": 73.2122 },
+  { $set: { "population": 55000 } }
+)
+{
+  acknowledged: true,
+  insertedId: null,
+  matchedCount: 1,
+  modifiedCount: 1,
+  upsertedCount: 0
+}
+P200602_6A
+
+
+
+
+								Question# 06
+db.Cities.deleteMany({ "timezone": "Asia/Karachi", "country": "PK" })
+{
+  acknowledged: true,
+  deletedCount: 424
+}
+P200602_6A
+
+
+								Question# 07
+db.moviepeople_1000.findOne({ "info.birthname": "Freeman, Crispin McDougal" })
+{
+  _id: ObjectId("6450c79f087a9928298e1d84"),
+  'person-name': 'Freeman, Crispin',
+  info: {
+    quotes: [
+      "On advice to aspiring voice-over actors: For myself, I'm in the favor of the more versatile kind of voice who can do all sorts of roles and transform. But to do that you have to have chops, and the best way to get them is through the classics, especially Shakespeare. It teaches you a lot about breathing, and idea and intention and rhythm. He's written the characters into the very poetry of the language, and if you try to get into and match his poetry it will take you out of your normal language patterns and that's the beginning of creating a character, not playing your mundane, everyday self. It's so verbally based, and in voice-acting, all you've got is your voice."
+    ],
+    trivia: [
+      'Said he was a little nervous about taking on the role of Zelgadis in Slayers because the character had already been voiced by someone else. When it came to reinterpretting the character, he said he thought that Zelgadis had more of an axe to grind.',
+      'Fluent in English and Spanish.',
+      "Is a big fan of authors 'William Shakespeare (I)' (qv), 'J.R.R. Tolkien' (qv), 'Joseph Campbell (III)' (qv), 'Marshall McLuhan' (qv), and 'William Gibson (II)' (qv).",
+      "Is a big fan of anime creators 'Hayao Miyazaki' (qv) and 'Osamu Tezuka (I)' (qv).",
+      'Frequently does voice overs for various union and non-union voice production companies for some video games and mostly animes.',
+      "Has a younger brother, 'Clark Freeman' (qv), and a younger sister, 'Cassidy Freeman' (qv).",
+      'Graduated from Williams College with a B.A. in theater & a minor in computer science',
+      'Graduated from Columbia University with an M.F.A. in acting',
+      'Is one of the only English-speaking voice actors to voice the same character of all Xenosaga video game series. Crispin was the only voice actor to provide the English voice of Albedo and Gaignun Kukai of the series.',
+      "On August 11, 2007, he married 'Izobel Carol' (qv) on The Big Island of Hawaii.",
+      'He and Veronica Taylor both came to the anime Slayers series as replacements - she replaced Joani Baker as Amelia and he replaced Daniel Cronin as Zelgadis.'
+    ],
+    minibiography: [
+      "Crispin is the oldest of three. He has a younger brother, Clark, and youngest sister, Cassidy. All three attended the Latin School of Chicago, where Crispin graduated in a class of 60 in 1990. Crispin had a Mac in 1985. To this day he is still an avid computer geek. He played no official team sports in school, but participated in ad hoc football played in Lincoln Park. Crispin was an active participant in many school plays both on and behind stage. He's also a genuinely nice and humble person."
+    ],
+    birthnotes: [
+      'Chicago, Illinois, USA'
+    ],
+    birthdate: [
+      '9 February 1972'
+    ],
+    height: [
+      "6' 2"
+    ],
+    spouse: [
+      "'Izobel Carol' (qv) (11 August 2007 - present)"
+    ],
+    birthname: [
+      'Freeman, Crispin McDougal'
+P200602_6A
+
+
+
+
+
+
+
+
+
+
